@@ -16,17 +16,18 @@ Co.meta offers versatile and easy to use steps like "Goto URL {URL}" or "Move mo
 5. [Validation - actions](#validation-actions)
 6. [CSS selectors actions](#css-selectors-actions)
 7. [Database actions](#database-actions)
-8. [Feature actions](#feature-actions)
-9. [Mobile actions](#mobile-actions)
-10. [Mouse actions](#mouse-actions)
-11. [Keyboard actions](#keyboard-actions)
-12. [IBM actions](#ibm-actions)
-13. [IBM Cognos QueryStudio actions](#ibm-cognos-querystudio-actions)
-14. [Editing Excel Files](#editing-excel-files)
-15. [Uploading and Downloading files](#uploading-and-downloading-files)
-16. [Other actions](#other-actions)
-17. [Action Examples](#action-examples)
-18. [Support](#support)
+8. [Email and Telegram actions](#email-and-telegram-actions) 
+9. [Feature actions](#feature-actions)
+10. [Mobile actions](#mobile-actions)
+11. [Mouse actions](#mouse-actions)
+12. [Keyboard actions](#keyboard-actions)
+13. [IBM actions](#ibm-actions)
+14. [IBM Cognos QueryStudio actions](#ibm-cognos-querystudio-actions)
+15. [Editing Excel Files](#editing-excel-files)
+16. [Uploading and Downloading files](#uploading-and-downloading-files)
+17. [Other actions](#other-actions)
+18. [Action Examples](#action-examples)
+19. [Support](#support)
 
 <br/>
 
@@ -653,6 +654,56 @@ click</td>
       <code>Switch current database to "myDatabaseConnection"</code>
     </td>
   </tr>
+</table>
+
+### Email and Telegram actions<a id="DB_AC"></a>
+
+<table> 
+	<tr> 
+		<th>Action</th> 
+		<th>Description</th> 
+		<th>Example</th> 
+	</tr>
+	<tr> 
+		<td>Send a telegram notification with message "{message}" with settings "{settings}"</td> 
+		<td>Sends a Telegram message with custom bot token, chat ID, or thread ID.<br><br>Use this to send notifications to specific Telegram chats or use a different bot than the default.<br><br>Supports variable replacement like <code>$feature_name</code>, <code>$result</code>, <code>$execution_time</code>, etc.</td> 
+		<td>
+			<b>Example 1:</b><br>
+			<code>Send a telegram notification with message "Build status: $result" with settings "{"bot_token": "your_token", "chat_id": "123456789", "thread_id": 10}"</code><br>
+			<b>Example 2:</b><br>
+			<code>Send a telegram notification with message "Test $feature_name completed in $execution_time" with settings "{"chat_id": "987654321"}"</code>
+		</td> 
+	</tr> 
+	<tr> 
+		<td>Send a telegram notification with message "{message}"</td> 
+		<td>Sends a Telegram message using the configured bot and subscribers from feature settings.<br><br>The message supports variable replacement like <code>$feature_name</code>, <code>$result</code>, <code>$execution_time</code>, <code>$department_name</code>, etc.</td> 
+		<td>
+			<b>Example 1:</b><br>
+			<code>Send a telegram notification with message "Alert: Test failed!\nExecution time: $execution_time"</code><br>
+			<b>Example 2:</b><br>
+			<code>Send a telegram notification with message "Feature $feature_name: $result"</code>
+		</td> 
+	</tr> 
+	<tr> 
+		<td>Send an email notification with subject "{subject}" and message "{message}" with recipients "{recipients}"</td> 
+		<td>Sends an email with custom TO, CC, and BCC recipients.<br><br>Use this to override the feature's configured email recipients and send to specific addresses.<br><br>Supports variable replacement like <code>$feature_name</code>, <code>$result</code>, <code>$execution_time</code>, <code>$department_name</code>, etc.</td> 
+		<td>
+			<b>Example 1:</b><br>
+			<code>Send an email notification with subject "Status Update" and message "Test: $feature_name\nResult: $result" with recipients "{"to": ["qa@example.com"], "cc": "dev@example.com", "bcc": "teamteki@example.com"}"</code><br>
+			<b>Example 2:</b><br>
+			<code>Send an email notification with subject "Test Results" and message "Execution completed in $execution_time" with recipients "{"to": ["teamteki@example.com"]}"</code>
+		</td> 
+	</tr> 
+	<tr> 
+		<td>Send an email notification with subject "{subject}" and message "{message}"</td> 
+		<td>Sends an email using the recipients configured in the feature settings.<br><br>The subject and message support variable replacement like <code>$feature_name</code>, <code>$result</code>, <code>$execution_time</code>, <code>$department_name</code>, etc.</td> 
+		<td>
+			<b>Example 1:</b><br>
+			<code>Send an email notification with subject "Daily Report" and message "Feature: $feature_name\nDepartment: $department_name\nStatus: $result"</code><br>
+			<b>Example 2:</b><br>
+			<code>Send an email notification with subject "Test Complete" and message "Execution time: $execution_time\nResult: $result"</code>
+		</td> 
+	</tr> 
 </table>
 
 ### Feature actions<a id="FEATURE_AC"></a>
